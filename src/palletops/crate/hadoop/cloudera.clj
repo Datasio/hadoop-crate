@@ -46,15 +46,17 @@
 (swap! dist-rules concat cloudera-rules)
 
 (defmethod url :cloudera
-  [{:keys [cloudera-version version dist-urls]}]
+  [{:keys [cloudera-version version dist-urls url]}]
   (let [cdh-version (as-version-vector cloudera-version)
         major-version (first cdh-version)
-        url (format
-             "%scdh/%s/hadoop-%s-cdh%s.tar.gz"
-             (:cloudera dist-urls)
-             major-version
-             version
-             (join "u" cdh-version))]
+        url (if (nil? url)
+                (format
+                   "%scdh/%s/hadoop-%s-cdh%s.tar.gz"
+                   (:cloudera dist-urls)
+                   major-version
+                   version
+                   (join "u" cdh-version))
+              url)]
     [url nil]))                         ; cloudera don't provide md5's :(
 
 (defmethod install-dist :cloudera
