@@ -43,7 +43,7 @@
   [{:config-dir !_
     :dist :cloudera
     :home ?h}
-   {:config-dir (render-path [?h "conf"])}])
+   {:config-dir (render-path [?h "etc/hadoop"])}])
 
 (swap! dist-rules concat cloudera-rules)
 
