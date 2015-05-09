@@ -540,13 +540,13 @@ already running."
               (if description description daemon))
          ~(hadoop-env-script settings)
          (if-not (pipe ("jps") ("grep" "-i" ~daemon))
-           ((str ~home "/bin/hadoop-daemon.sh") ~(name action) ~daemon))))
+           ((str ~home "/sbin/hadoop-daemon.sh") ~(name action) ~daemon))))
       (with-action-options {:sudo-user user}
         (exec-checked-script
          (str (name action) " hadoop daemon: "
               (if description description daemon))
          ~(hadoop-env-script settings)
-         ((str ~home "/bin/hadoop-daemon.sh") ~(name action) ~daemon))))))
+         ((str ~home "/sbin/hadoop-daemon.sh") ~(name action) ~daemon))))))
 
 (def config-file-for-role
   {:hdfs-node :hdfs-site

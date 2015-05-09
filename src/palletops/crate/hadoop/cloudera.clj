@@ -9,12 +9,14 @@
 
 (def cloudera-hadoop-version
   {"3.0" "0.20.2"
-   "3.5" "0.20.2"})
+   "3.5" "0.20.2"
+   "5.4.0" "2.6.0"})
 
 ;;; multiple versions of cloudera may correspond to a single hadoop version, so
 ;;; this map is not just the inverse of cloudera-hadoop-version
 (def hadoop-cloudera-version
-  {"0.20.2" "3.5"})
+  {"0.20.2" "3.5"
+   "2.6.0" "5.4.0"})
 
 (defrules cloudera-rules
   ^{:name :cloudera-home}
